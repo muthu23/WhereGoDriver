@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/text_color_white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_190sdp"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="start"
+
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center_vertical"
+                    android:background="@android:color/transparent">
+
+                    <ImageView
+                        android:id="@+id/backArrow"
+                        android:background="@drawable/back_white"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_margin="10dp"
+                       
+                        android:backgroundTint="@color/text_color_white"
+                        android:padding="5dp"/>
+
+                    <TextView
+                        android:text="@string/edit_profile"
+                        android:gravity="center_vertical"
+                        android:textSize="18sp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@android:color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        />
+
+                </LinearLayout>
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="@dimen/_64sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:src="@drawable/ic_dummy_user"
+                />
+
+                <com.wherego.driver.utills.MyTextView
+                    android:id="@+id/txtHeaderName"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_white"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="Rajan Kumar"/>
+                <com.wherego.driver.utills.MyTextView
+                    android:id="@+id/txtHeaderMob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:textColor="@color/text_color_white"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="+917277834909"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/text_color_white">
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/cancel_ride_color"/>
+                <LinearLayout
+                    android:id="@+id/layoutName"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/_14sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:drawableTint="@color/calbg"
+                        android:text="@string/name"
+                        />
+                    <TextView
+                        android:id="@+id/first_name"
+                        android:textSize="@dimen/_13sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Name"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/cancel_ride_color"/>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutAddress"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/_14sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:drawableTint="@color/calbg"
+                        android:text="@string/email"
+                        />
+                    <TextView
+                        android:id="@+id/email"
+                        android:textSize="@dimen/_13sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Name"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/cancel_ride_color"/>
+
+                <LinearLayout
+                    android:id="@+id/layoutMobile"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/_14sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:drawableTint="@color/calbg"
+                        android:text="@string/phone_number"
+                        />
+                    <TextView
+                        android:id="@+id/mobile_no"
+                        android:textSize="@dimen/_13sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Name"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/cancel_ride_color"/>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/layoutService"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp">
+
+                    <com.wherego.driver.utills.MyTextView
+                   
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+
+                        android:textColor="@color/white"
+                
+                        android:layout_height="wrap_content"
+                        android:text="Service type"
+                        />
+                    <com.wherego.driver.utills.MyEditText
+                        android:id="@+id/service"
+                        android:background="@null"
+                        android:enabled="false"
+                        android:maxLines="1"
+
+                        android:textSize="@dimen/_11sdp"
+                        android:layout_weight="1"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:gravity="center_vertical|end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_15sdp"
+                        android:text=""
+                        />
+                </LinearLayout>
+                <View
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/colorAccent"/>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/layoutUpdatePwd"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:drawableStart="@drawable/ic_password"
+                        android:textSize="@dimen/_13sdp"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+
+                        android:textColor="@color/white"
+                        android:drawableTint="@color/cancel_ride_color"
+                        android:layout_height="wrap_content"
+                        />
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/changePasswordTxt"
+                        android:textSize="@dimen/_11sdp"
+                        android:layout_weight="2"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:gravity="center_vertical|end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_15sdp"
+                        android:text=""
+                        />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            >
+            <Switch
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+
+                android:drawablePadding="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_regular"
+
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:checked="true"
+                android:drawableStart="@drawable/ic_notification"
+                android:text="@string/notifications"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+            <com.wherego.driver.utills.MyTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+            
+                android:gravity="center"
+                android:text="@string/logout"/>
+        </androidx.cardview.widget.CardView>
+
+        <com.wherego.driver.utills.MyButton
+            android:id="@+id/saveBTN"
+            android:visibility="gone"
+            android:text="@string/update"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            android:background="@color/theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+

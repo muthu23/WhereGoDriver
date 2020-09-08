@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/driver" />
+
+    <com.wherego.driver.utills.MyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/waitingForApproval"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/txt_WaitingForApproval" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_margin="@dimen/button_margin"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/button_padding"
+            android:text="@string/logout"
+            android:textColor="@color/button_text_color" />
+
+    </LinearLayout>
+
+</LinearLayout>

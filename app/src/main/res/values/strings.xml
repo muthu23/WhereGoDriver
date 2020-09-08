@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "WhereGo Driver Demo"><!ENTITY order "Order"><!ENTITY orders "Orders"><!ENTITY tripscap "ORDER"><!ENTITY service "Service">]>
+<resources>
+
+    <string name="app_name">WhereGo Delivery</string>
+
+    <!--Google map-->
+    <!--debug key-->
+    <string name="google_map_api">AIzaSyCz00Ll0xMvWzM1RmNTxgU5NkF2WnAv_tw</string>
+    <!--live key-->
+    <!--<string name="google_map_api">AIzaSyDI3lQVskBOnMcb8yhRJep9ZX9B2mkeeu8</string>-->
+    <!-- Facebook ID and Account Kit ID  -->
+
+    <string name="facebook_app_id">199155570985886</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">6d5c82a356d935e3bb68000a44cb752d</string>
+
+    <!--navigation_drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="waitingForApproval">Waiting for your account to be verified by our authority.</string>
+
+    <!--Activity Begin-->
+
+    <!--Activity Email -->
+
+    <!--Activity Password -->
+
+    <!--Activity Register-->
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="first_name">Name</string>
+    <string name="password_txt">******</string>
+    <string name="mobile_number_validation">Mobile number must have numbers between 10 to 20 digits</string>
+
+    <!-- Activity ForgetPassword -->
+    <string name="recover_password">Enter your mail ID for recovery</string>
+
+    <string name="change_password">Looking to change password?</string>
+    <string name="save">SAVE</string>
+
+    <!--Show Dailog-->
+    <string name="connect_to_network">Connect to network or quit</string>
+    <string name="connect_to_wifi">Connect to WIFI</string>
+    <string name="quit">Quit</string>
+    <string name="cancel_ride">Cancel &order;</string>
+    <string name="start_ride">Start &order;</string>
+    <string name="cancel">Cancel</string>
+    <string name="cencel_request">Are you sure you want to cancel the &order;?</string>
+    <string name="exit_confirm">Are you sure you want to logout?</string>
+
+    <!-- Error Messages-->
+    <string name="something_went_wrong">Something went wrong.</string>
+    <string name="something_went_wrong_net">Something went wrong, Please check internet connection.</string>
+    <string name="oops_connect_your_internet">Oops ! Connect your Internet.</string>
+    <string name="server_down">Unable to reach server.</string>
+    <string name="please_try_again">Please try again.</string>
+    <string name="email_validation">Enter your email.</string>
+    <string name="not_valid_email">Not a valid email</string>
+    <string name="password_validation">Password could not be left empty.</string>
+    <string name="first_name_empty">Name required.</string>
+    <string name="mobile_number_empty">Mobile number required.</string>
+
+    <!--Approval status-->
+    <string name="approved">Approved</string>
+    <string name="banned">Banned</string>
+    <string name="waiting_for_approval">Waiting for Approval</string>
+
+    <!--Wallet Fragment-->
+
+    <!--Offline Activity -->
+
+    <!--Invalid Username and Password-->
+
+    <!--True or False -->
+    <string name="True">true</string>
+    <string name="False">false</string>
+
+    <!--Your trips-->
+    <string name="history">History</string>
+    <string name="comments">Comments</string>
+    <string name="no_trips">No Order available.</string>
+    <string name="no_rides">No &orders; completed.</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="payment_methods">Payment Methods</string>
+
+
+    <!--Change Password-->
+    <string name="change_password_title">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm New Password</string>
+    <string name="please_enter_current_pass">Please enter current password.</string>
+    <string name="please_enter_new_pass">Please enter new password.</string>
+    <string name="please_enter_confirm_pass">Please enter confirmation password.</string>
+    <string name="different_passwords">Password doesn\'t match.</string>
+
+    <!--Side Navigation Menu -->
+    <string name="your_trips">My Orders</string>
+    <string name="help">Help</string>
+    <string name="logout">Logout</string>
+    <string name="user_no_mobile">User do not have a valid mobile number.</string>
+    <string name="confirm_password_validation">Password Mismatch</string>
+    <string name="note">Note : Please enter the OTP sent to your registered email</string>
+    <string name="secrete_code">Enter OTP</string>
+    <string name="cancel_confirm">Are you sure you want to cancel the &order;?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="service">&service;</string>
+    <string name="commission">&service; charge</string>
+    <string name="base_price">Base fare</string>
+    <string name="distance_price">Distance fare</string>
+    <string name="profile">Profile</string>
+    <string name="sos_confirm">Are you sure you want to proceed with emergency call?</string>
+    <string name="invoice">Invoice - </string>
+    <string name="pick_up">Pick up Location </string>
+    <string name="reason_to_cancel">Reason to cancel</string>
+    <string name="booking_id_colon">Booking ID : </string>
+    <string name="booking_id">Booking ID</string>
+    <string name="submit">Submit</string>
+    <string name="total_rides">TOTAL NO OF ORDERS</string>
+    <string name="revenue">REVENUE</string>
+    <string name="schedule_rides">NO OF SCHEDULED ORDERS</string>
+    <string name="canceled_rides">CANCELLED ORDERS</string>
+    <string name="upcoming_rides">Upcoming &orders;</string>
+    <string name="no_address">No address available</string>
+    <string name="first_name_no_number">First name do not accept numbers</string>
+    <string name="password_size">Password size must be atleast 6</string>
+    <string name="ok">OK</string>
+    <string name="earned_amount">Earned Amount</string>
+    <string name="withdraw_amount">Withdraw Amount</string>
+    <string name="add">Add</string>
+    <string name="select_account">Select Account</string>
+    <string name="not_added_bank_details_yet">Not added bank details yet</string>
+    <string name="earned_money">Earned Money</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="past_withdraw">Past Withdraw</string>
+    <string name="status">Status</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="account_number">Account number</string>
+    <string name="account_holder_name">Account holder name</string>
+    <string name="add_account">Add account</string>
+    <string name="add_bank_account">Add bank account</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="fifteen_days">Admin will approve your amount after 15 days</string>
+
+    <string name="phone_verification">Phone Verification</string>
+    <string name="enter_your_otp_code_here">Enter your OTP code here</string>
+    <string name="verify_now">verify now</string>
+    <string name="resend">Resend</string>
+    <string name="resend_in">Resend In</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="login">Login</string>
+    <string name="google_login">Google Login</string>
+    <string name="facebook_login">Facebook Login</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="vehicle_plate_number">Vehicle plate number</string>
+    <string name="vehicle_model">Vehicle model</string>
+    <string name="service_type">Please select service type</string>
+    <string name="select_service_type">Select Service Type</string>
+    <string name="please_upload_documents">Please upload documents</string>
+    <string name="agree_with_check_term_and_conditions">Agree with check</string>
+    <string name="done">Done</string>
+    <string name="update">UPDATE</string>
+    <string name="browse">Browse</string>
+
+    <string name="online">You\'re online</string>
+    <string name="offline">You\'re offline</string>
+    <string name="earnings">My Earning</string>
+    <string name="summary">Summary</string>
+    <string name="notifications">Notification</string>
+    <string name="drop_at">Delivery Location </string>
+    <string name="tap_when_arrived">ARRIVED ON PICKEDUP LOCATION</string>
+    <string name="tap_when_pickedup">DELIVERY ITEM PICKEDUP</string>
+    <string name="tap_when_dropped">ITEM DELIVERED</string>
+    <string name="tap_when_paid">CONFIRM PAYMENT</string>
+    <string name="confirm_payment">CONFIRM PAYMENT</string>
+    <string name="schedulet_at">Scheduled at :</string>
+
+    <string name="andwhy">Why specify?</string>
+    <string name="my_reason_is_not_listed">My reason is not listed</string>
+    <string name="booked_another_cab">Booked another cab</string>
+    <string name="plan_changed">Plan Changed</string>
+    <string name="please_select_reason">Please select reason</string>
+    <string name="please_specify_reason">Please specify reason</string>
+    <string name="legal">Legal</string>
+
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="documents">Documents</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="you_are_on_the_way">You are on the way</string>
+    <string name="you_have_to_reach_picked_up">You have to reach pick up</string>
+    <string name="on_the_way_of_drop_off">On the way of delivery</string>
+    <string name="total">Total</string>
+    <string name="rate_provider">How was your experience</string>
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="earning">Earning</string>
+
+    <string name="welcome_text">Welcome to &appName; support</string>
+    <string name="call_support">Call Support</string>
+    <string name="chat_support">Chat Support</string>
+    <string name="weburl">Web Url</string>
+    <string name="parcel_name">Parcel Name</string>
+    <string name="parcel_quantity">Parcel Quantity</string>
+    <string name="parcel_weight">Parcel Weight</string>
+    <string name="extra_notes">Extra Notes :</string>
+    <string name="receiver_information">Receiver Information</string>
+    <string name="receiver_name">Receiver Name</string>
+    <string name="receiver_contact">Receiver Contact</string>
+    <string name="receiver_email">Receiver Email</string>
+    <string name="receiver_address">Receiver Address</string>
+    <string name="bank">Bank</string>
+    <string name="paypal">Paypal</string>
+    <string name="ifsc_code">IFSC Code</string>
+    <string name="paypal_id">Paypal Id</string>
+    <string name="parcel_height">Parcel Height</string>
+    <string name="parcel_width">Parcel Width</string>
+    <string name="parcel_information">Parcel Information</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="signature">Signature</string>
+    <string name="clear">Clear</string>
+    <string name="confirm">Confirm</string>
+    <string name="total_earnings">Total Earnings</string>
+
+    <string name="copyright">Copyright</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="terms_amp_conditionsu"><u><![CDATA[Terms & Conditions]]></u>.</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <string name="about_page">It is a long established fact that a reader will be distracted by
+        the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+        is that it has a more-or-less normal distribution of letters, as opposed to using
+        Various versions have evolved over the years, sometimes by accident,
+        sometimes on purpose (injected humour and the like).</string>
+
+</resources>

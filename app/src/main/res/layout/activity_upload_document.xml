@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDocList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/llSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_6sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+            <CheckBox
+                android:id="@+id/cbTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/agree_with_check_term_and_conditions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_3sdp"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/colorButton"
+                android:text="@string/terms_amp_conditionsu"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btDone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_37sdp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="@string/done"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

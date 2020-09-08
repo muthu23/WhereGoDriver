@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_2sdp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDocName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvDocStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/green" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivDoc"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvDocUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center"
+            android:text="@string/update"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvDocUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:gravity="center"
+            android:padding="@dimen/_7sdp"
+            android:text="@string/browse"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,680 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back_white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/history"
+            android:textColor="@android:color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/tripImg"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/tripProviderImg"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                     />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/tripProviderName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_text_color"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <RatingBar
+                        android:id="@+id/tripProviderRating"
+                        style="?attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressTint="#FFCA28" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="0.8"
+                    android:orientation="vertical">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/tripDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingMultiplier="1.5"
+                        android:textColor="@color/black_text_color"
+                        android:gravity="end"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1a1a1a" />
+
+            <LinearLayout
+                android:id="@+id/sourceAndDestinationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="10dp"
+                        android:src="@drawable/round_shape" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/tripSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="10dp"
+                        android:src="@drawable/round_shape" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/tripDestination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/ViewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1a1a1a" />
+
+            <LinearLayout
+                android:id="@+id/layoutParcel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyBoldTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="7dp"
+                        android:text="@string/parcel_information"
+                        android:textColor="@color/black"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/parcel_name"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/parcel_quantity"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tv_qty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+
+                            android:layout_marginEnd="20dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/parcel_weight"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tv_discription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+
+                            android:layout_marginRight="15dp"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/parcel_height"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tvHeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+
+                            android:layout_marginRight="15dp"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/parcel_width"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tvWidth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+
+                            android:layout_marginRight="15dp"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_height="wrap_content">
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+
+                            android:text="@string/extra_notes"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <com.wherego.driver.utills.MyTextView
+                            android:id="@+id/tv_short_notes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+
+                            android:layout_marginRight="15dp"
+                            android:maxLines="5"
+                            android:ellipsize="end"
+                            android:textColor="@color/black"
+                            android:gravity="center|start"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    </LinearLayout>
+
+
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_upload"-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="123dp"-->
+<!--                        android:layout_gravity="center" />-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <com.wherego.driver.utills.MyBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:text="@string/receiver_information"
+                    android:textColor="@color/black"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+
+                        android:text="@string/receiver_name"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/rv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+
+                        android:text="@string/receiver_contact"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/rv_mob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+
+                        android:text="@string/receiver_email"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/rv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+
+                        android:text="@string/receiver_address"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/rv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:text="Receiver Signature"
+                        android:textColor="@color/black"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                        <ImageView
+                            android:id="@+id/imgSign"
+                            android:layout_width="@dimen/_72sdp"
+                            android:layout_height="@dimen/_48sdp"
+                            android:scaleType="fitXY"
+                            android:layout_marginEnd="@dimen/_15sdp"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/booking_id"
+                        android:textColor="@color/black_text_color"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/trip_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="center|end"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1a1a1a" />
+
+                <com.wherego.driver.utills.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+
+                    android:text="@string/payment_methods"
+                    android:textColor="@color/black_text_color"
+                    android:gravity="center|start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/paymentTypeImg"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/visa_icon" />
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/paymentType"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black_text_color"
+                        android:gravity="center|start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <com.wherego.driver.utills.MyTextView
+                        android:id="@+id/tripAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black_text_color"
+                        android:gravity="center|end"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1a1a1a" />
+
+            <LinearLayout
+                android:id="@+id/lnrComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <com.wherego.driver.utills.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comments"
+                    android:textColor="@color/black_text_color"
+                    android:gravity="center|start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <com.wherego.driver.utills.MyTextView
+                    android:id="@+id/tripComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/black_text_color"
+                    android:gravity="center|start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
