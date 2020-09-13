@@ -23,7 +23,7 @@
             android:padding="@dimen/_7sdp"
             android:src="@drawable/back_white" />
 
-        <com.wherego.driver.utills.MyTextView
+        <com.wherego.delivery.driver.utills.MyTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_12sdp"
@@ -100,14 +100,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_12sdp"
                         android:text="@string/revenue"
                         android:textSize="@dimen/_15sdp" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/currency_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_12sdp"
@@ -175,7 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_12sdp"

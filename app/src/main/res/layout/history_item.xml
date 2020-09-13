@@ -81,7 +81,7 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:id="@+id/serviceType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

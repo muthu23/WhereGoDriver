@@ -114,6 +114,14 @@
         android:padding="@dimen/_7sdp"
         android:visibility="visible">
 
+        <ImageView
+            android:id="@+id/imgCurrentLoc"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="right"
+            android:src="@drawable/current_loc"
+            android:visibility="gone" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/total_earn_layout"
             android:layout_width="match_parent"
@@ -343,13 +351,7 @@
         </androidx.cardview.widget.CardView>
 
 
-        <ImageView
-            android:id="@+id/imgCurrentLoc"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_gravity="right"
-            android:src="@drawable/current_loc"
-            android:visibility="gone" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -389,7 +391,7 @@
                     android:text="@string/delivery_address"
                     android:textSize="@dimen/_10sdp" />
 
-                <com.wherego.driver.utills.ExpandableTextView
+                <com.wherego.delivery.driver.utills.ExpandableTextView
                     android:id="@+id/destination"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
@@ -1736,7 +1738,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.wherego.driver.utills.MyBoldTextView
+                <com.wherego.delivery.driver.utills.MyBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

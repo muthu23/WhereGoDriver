@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "WhereGo Driver Demo"><!ENTITY order "Order"><!ENTITY orders "Orders"><!ENTITY tripscap "ORDER"><!ENTITY service "Service">]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "WhereGo Delivery Driver"><!ENTITY order "Order"><!ENTITY orders "Orders"><!ENTITY tripscap "ORDER"><!ENTITY service "Service">]>
 <resources>
 
-    <string name="app_name">WhereGo Delivery</string>
+    <string name="app_name">WhereGo Delivery Driver</string>
 
     <!--Google map-->
     <!--debug key-->
-    <string name="google_map_api">AIzaSyCz00Ll0xMvWzM1RmNTxgU5NkF2WnAv_tw</string>
+    <!--<string name="google_map_api">AIzaSyBsJ8VpT5A8rBXSvDMzJ3SOAnx_meBkIl4</string>-->
     <!--live key-->
     <!--<string name="google_map_api">AIzaSyDI3lQVskBOnMcb8yhRJep9ZX9B2mkeeu8</string>-->
     <!-- Facebook ID and Account Kit ID  -->

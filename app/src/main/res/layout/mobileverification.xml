@@ -101,7 +101,7 @@
 
                     >
 
-                    <com.wherego.driver.utills.MyEditText
+                    <com.wherego.delivery.driver.utills.MyEditText
                         android:id="@+id/mobile_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"

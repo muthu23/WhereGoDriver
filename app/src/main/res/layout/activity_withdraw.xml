@@ -24,7 +24,7 @@
             android:padding="5dp"
             android:src="@drawable/back_white" />
 
-        <com.wherego.driver.utills.MyBoldTextView
+        <com.wherego.delivery.driver.utills.MyBoldTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -67,7 +67,7 @@
                     android:textColor="@color/black_text_color"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                <com.wherego.driver.utills.MyBoldTextView
+                <com.wherego.delivery.driver.utills.MyBoldTextView
                     android:id="@+id/earnedMoneyTxtView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
-                <com.wherego.driver.utills.MyButton
+                <com.wherego.delivery.driver.utills.MyButton
                     android:id="@+id/addAccountDetailsBtn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
@@ -102,7 +102,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:background="@android:color/darker_gray" />
 
-        <com.wherego.driver.utills.MyTextView
+        <com.wherego.delivery.driver.utills.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
@@ -125,7 +125,7 @@
 
                 android:orientation="horizontal">
 
-                <com.wherego.driver.utills.MyButton
+                <com.wherego.delivery.driver.utills.MyButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_weight="1"
@@ -134,7 +134,7 @@
                     android:textColor="@color/button_text_color" />
 
 
-                <com.wherego.driver.utills.MyButton
+                <com.wherego.delivery.driver.utills.MyButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_weight="1"
@@ -143,7 +143,7 @@
                     android:textColor="@color/button_text_color" />
 
 
-                <com.wherego.driver.utills.MyButton
+                <com.wherego.delivery.driver.utills.MyButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_weight="1"

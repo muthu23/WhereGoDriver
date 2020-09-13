@@ -35,7 +35,7 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <com.wherego.driver.utills.MyTextView
+        <com.wherego.delivery.driver.utills.MyTextView
             android:id="@+id/accountName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
-        <com.wherego.driver.utills.MyTextView
+        <com.wherego.delivery.driver.utills.MyTextView
             android:id="@+id/accountNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

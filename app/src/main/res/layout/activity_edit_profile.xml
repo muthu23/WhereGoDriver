@@ -59,7 +59,7 @@
                     android:src="@drawable/ic_dummy_user"
                 />
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:id="@+id/txtHeaderName"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                     android:textColor="@color/text_color_white"
                     android:textSize="@dimen/_15sdp"
                     android:text="Rajan Kumar"/>
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:id="@+id/txtHeaderMob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                    
                         android:textSize="@dimen/_13sdp"
                         android:layout_weight="1"
@@ -219,7 +219,7 @@
                         android:layout_height="wrap_content"
                         android:text="Service type"
                         />
-                    <com.wherego.driver.utills.MyEditText
+                    <com.wherego.delivery.driver.utills.MyEditText
                         android:id="@+id/service"
                         android:background="@null"
                         android:enabled="false"
@@ -249,7 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:drawableStart="@drawable/ic_password"
                         android:textSize="@dimen/_13sdp"
                         android:layout_weight="1"
@@ -262,7 +262,7 @@
                         android:drawableTint="@color/cancel_ride_color"
                         android:layout_height="wrap_content"
                         />
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/changePasswordTxt"
                         android:textSize="@dimen/_11sdp"
                         android:layout_weight="2"
@@ -309,7 +309,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp">
-            <com.wherego.driver.utills.MyTextView
+            <com.wherego.delivery.driver.utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
                 android:textColor="@color/white"
@@ -319,7 +319,7 @@
                 android:text="@string/logout"/>
         </androidx.cardview.widget.CardView>
 
-        <com.wherego.driver.utills.MyButton
+        <com.wherego.delivery.driver.utills.MyButton
             android:id="@+id/saveBTN"
             android:visibility="gone"
             android:text="@string/update"

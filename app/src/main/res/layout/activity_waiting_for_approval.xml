@@ -12,7 +12,7 @@
         android:layout_marginTop="50dp"
         android:src="@drawable/driver" />
 
-    <com.wherego.driver.utills.MyTextView
+    <com.wherego.delivery.driver.utills.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"

@@ -19,7 +19,7 @@
             android:padding="5dp"
             android:src="@drawable/back_icon" />
 
-        <com.wherego.driver.utills.MyBoldTextView
+        <com.wherego.delivery.driver.utills.MyBoldTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"

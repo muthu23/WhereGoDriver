@@ -23,7 +23,7 @@
             android:padding="5dp"
             android:src="@drawable/back_white" />
 
-        <com.wherego.driver.utills.MyBoldTextView
+        <com.wherego.delivery.driver.utills.MyBoldTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -52,7 +52,7 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <com.wherego.driver.utills.MyTextView
+            <com.wherego.delivery.driver.utills.MyTextView
                 android:id="@+id/familyTxtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:textSize="14sp" />
 
 
-            <com.wherego.driver.utills.MyButton
+            <com.wherego.delivery.driver.utills.MyButton
                 android:id="@+id/addAmountBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
@@ -109,7 +109,7 @@
         android:orientation="vertical">
 
 
-        <com.wherego.driver.utills.MyTextView
+        <com.wherego.delivery.driver.utills.MyTextView
             android:id="@+id/selectAmountTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:background="@drawable/ic_account" />
 
 
-            <com.wherego.driver.utills.MyBoldTextView
+            <com.wherego.delivery.driver.utills.MyBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
@@ -170,7 +170,7 @@
         card_view:contentPadding="10dp">
 
 
-        <com.wherego.driver.utills.MyButton
+        <com.wherego.delivery.driver.utills.MyButton
             android:id="@+id/addBankAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

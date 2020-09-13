@@ -69,7 +69,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/tripProviderName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_weight="0.8"
                     android:orientation="vertical">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/tripDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                         android:padding="10dp"
                         android:src="@drawable/round_shape" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/tripSource"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                         android:padding="10dp"
                         android:src="@drawable/round_shape" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/tripDestination"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyBoldTextView
+                    <com.wherego.delivery.driver.utills.MyBoldTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="7dp"
@@ -203,7 +203,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -213,7 +213,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tv_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -243,7 +243,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tv_qty"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -263,7 +263,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -273,7 +273,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tv_discription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -294,7 +294,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -304,7 +304,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tvHeight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -325,7 +325,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -335,7 +335,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tvWidth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -356,7 +356,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -366,7 +366,7 @@
                             android:gravity="center|start"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                        <com.wherego.driver.utills.MyTextView
+                        <com.wherego.delivery.driver.utills.MyTextView
                             android:id="@+id/tv_short_notes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -396,7 +396,7 @@
 
                 </LinearLayout>
 
-                <com.wherego.driver.utills.MyBoldTextView
+                <com.wherego.delivery.driver.utills.MyBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="7dp"
@@ -410,7 +410,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -420,7 +420,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/rv_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -439,7 +439,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -449,7 +449,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/rv_mob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -468,7 +468,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -478,7 +478,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/rv_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -498,7 +498,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -508,7 +508,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/rv_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -528,7 +528,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="wrap_content">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -561,7 +561,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -570,7 +570,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/trip_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -588,7 +588,7 @@
                     android:layout_height="0.5dp"
                     android:background="#1a1a1a" />
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -614,7 +614,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/visa_icon" />
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/paymentType"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -624,7 +624,7 @@
                         android:gravity="center|start"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
-                    <com.wherego.driver.utills.MyTextView
+                    <com.wherego.delivery.driver.utills.MyTextView
                         android:id="@+id/tripAmount"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -653,7 +653,7 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/comments"
@@ -661,7 +661,7 @@
                     android:gravity="center|start"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-                <com.wherego.driver.utills.MyTextView
+                <com.wherego.delivery.driver.utills.MyTextView
                     android:id="@+id/tripComments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
