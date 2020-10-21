@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">WhereGo Delivery Driver</string>
-
+    <string name="default_notification_channel_id">com.wherego.delivery.driver</string>
     <!--Google map-->
     <!--debug key-->
     <!--<string name="google_map_api">AIzaSyBsJ8VpT5A8rBXSvDMzJ3SOAnx_meBkIl4</string>-->

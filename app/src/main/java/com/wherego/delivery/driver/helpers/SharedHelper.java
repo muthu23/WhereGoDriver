@@ -25,8 +25,12 @@ public class SharedHelper {
 
 
     public static void clearSharedPreferences(Context context) {
+        String DeviceToken = getKey(context,"device_token");
         sharedPreferences = context.getSharedPreferences("Cache", Context.MODE_PRIVATE);
-        sharedPreferences.edit().clear().commit();
+        sharedPreferences.edit().clear().apply();
+
+        editor = sharedPreferences.edit();
+        editor.putString("device_token", DeviceToken).apply();
 
     }
 

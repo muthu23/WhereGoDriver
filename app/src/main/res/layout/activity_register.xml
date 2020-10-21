@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
         android:layout_marginBottom="@dimen/_minus25sdp"
-        android:background="@drawable/loginbg">
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -21,8 +21,9 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/_124sdp"
-                android:layout_height="@dimen/_110sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:scaleType="centerInside"
                 android:src="@drawable/ic_launcher_web" />
         </LinearLayout>
     </FrameLayout>
@@ -102,7 +103,7 @@
                             android:layout_width="@dimen/_68sdp"
                             android:layout_height="wrap_content"
                             app:ccp_contentColor="@color/black"
-                            app:ccp_defaultNameCode="us"
+                            app:ccp_defaultNameCode="my"
                             app:ccp_showFlag="true"
                             app:ccp_showNameCode="false"
                             app:ccp_showPhoneCode="true"

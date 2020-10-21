@@ -15,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.wherego.delivery.driver.R;
+import com.wherego.delivery.driver.bean.User;
 import com.wherego.delivery.driver.helpers.ConnectionHelper;
 import com.wherego.delivery.driver.helpers.CustomDialog;
-import com.wherego.delivery.driver.helpers.User;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 

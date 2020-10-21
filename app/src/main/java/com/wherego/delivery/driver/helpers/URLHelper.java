@@ -3,10 +3,10 @@ package com.wherego.delivery.driver.helpers;
 
 public interface URLHelper {
 
-    String BASE = "http://Delivery.wherego.com.my/"; // Base_URl
+    String BASE = "https://delivery.wherego.com.my/"; // Base_URl
     String IMAGE_BASE = BASE + "storage/app/public/";
 //    int client_id = 2;
-//    String client_secret = "WifS1rMi3LvuorP1G2UdtKZairUNSH2iMqrKivPf";
+//    String client_secret = "Sh0w3TPOmqQlSZDaN5MbFEz4fWbxqFjyNgz88Cw2";
 //    String STRIPE_TOKEN = "pk_test_LTXZTPA9yepu9dEodKsJm6GA";
 
     String RESET_PASSWORD = BASE + "api/provider/reset/password";
@@ -34,7 +34,9 @@ public interface URLHelper {
     String DOC_SUBMIT = "api/provider/document/applied";
 
     String UPDATE_DRIVER_STATUS = "api/provider/profile/available";
-    String CURRENT_TRIP = "api/provider/trip";
+    String CURRENT_TRIP = "api/provider/request/service";
+    String CURRENT_TRIP_RATE = "api/provider/trip";
+    String CURRENT_TRIP_UPDATE = "api/provider/update";
     String UPLOAD_SIGN = "api/provider/upload-signature";
     String CANCEL_TRIP = "api/provider/cancel";
 

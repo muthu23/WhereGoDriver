@@ -37,15 +37,9 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:layout_width="@dimen/_96sdp"
-                    android:layout_height="@dimen/_32sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:background="@drawable/textlogo" />
-
-                <ImageButton
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
-                    android:background="@drawable/screenlogo" />
+                    android:background="@drawable/ic_launcher_web" />
             </LinearLayout>
         </LinearLayout>
 
@@ -91,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    app:ccp_defaultNameCode="us" />
+                    app:ccp_defaultNameCode="my" />
 
 
                 <com.google.android.material.textfield.TextInputLayout

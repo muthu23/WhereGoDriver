@@ -430,7 +430,8 @@ public class LoginActivity extends AppCompatActivity {
     @SuppressLint("HardwareIds")
     public void GetToken() {
         try {
-            if (!SharedHelper.getKey(App.getContext(), "device_token").equals("") && SharedHelper.getKey(App.getContext(), "device_token") != null) {
+            if (!SharedHelper.getKey(App.getContext(), "device_token").equals("")
+                    && SharedHelper.getKey(App.getContext(), "device_token") != null) {
                 device_token = SharedHelper.getKey(App.getContext(), "device_token");
                 utils.print(TAG, "GCM Registration Token: " + device_token);
             } else {

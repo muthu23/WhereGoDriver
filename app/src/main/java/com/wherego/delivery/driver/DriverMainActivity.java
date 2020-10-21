@@ -105,6 +105,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 import com.wherego.delivery.driver.activities.EarningActivity;
 import com.wherego.delivery.driver.activities.HelpActivity;
 import com.wherego.delivery.driver.activities.HistoryActivity;
@@ -134,7 +135,6 @@ import com.wherego.delivery.driver.utills.CustomTypefaceSpan;
 import com.wherego.delivery.driver.utills.LocationTracking;
 import com.wherego.delivery.driver.utills.Utilities;
 import com.wherego.delivery.driver.utills.Utils;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -175,18 +175,24 @@ public class DriverMainActivity extends AppCompatActivity implements
     SignaturePad signature_pad;
     @BindView(R.id.clear_button)
     Button clear_button;
+    @BindView(R.id.activity_main)
+    View view;
+
+
     @OnClick(R.id.clear_button)
-    void clear_button(){
+    void clear_button() {
         signature_pad.clear();
     }
+
     @BindView(R.id.save_button)
     Button save_button;
+
     @OnClick(R.id.save_button)
-    void save_button(){
+    void save_button() {
         Bitmap bitmap = signature_pad.getSignatureBitmap();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
         String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
         Log.d("signature", encoded);
         saveSignature(encoded);
@@ -197,7 +203,7 @@ public class DriverMainActivity extends AppCompatActivity implements
         customDialog = new CustomDialog(DriverMainActivity.this);
         customDialog.setCancelable(false);
         customDialog.show();
-        Call<ResponseBody> call = restInterface.saveSign(URLHelper.REQUEST_WITH, auth, request_id,sign);
+        Call<ResponseBody> call = restInterface.saveSign(URLHelper.REQUEST_WITH, auth, request_id, sign);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -244,17 +250,19 @@ public class DriverMainActivity extends AppCompatActivity implements
 
     @OnClick(R.id.btn_01_status)
     void btn_01_statusClick() {
-        if (CurrentStatus.equalsIgnoreCase("DROPPED")) {
-            dropTrip(request_id, CurrentStatus);
+
+        if (mainTripStatus.equalsIgnoreCase("DROPPED")) {
+            CurrentStatus = "COMPLETED";
+            updateTripUpdateStatus(request_id, CurrentStatus);
         } else {
-            updateTripStatus(request_id, CurrentStatus);
+            dropTrip(userdrop_request_id, request_id, CurrentStatus);
         }
 
     }
 
     @OnClick(R.id.btn_confirm_payment)
     void btn_confirm_paymentClick() {
-        updateTripStatus(request_id, CurrentStatus);
+        updateTripUpdateStatus(request_id, CurrentStatus);
     }
 
     @OnClick(R.id.btn_rate_submit)
@@ -338,6 +346,7 @@ public class DriverMainActivity extends AppCompatActivity implements
 
     RequestItem requestItem;
     JSONObject itemObject;
+
     @SuppressLint("SetTextI18n")
     @OnClick(R.id.img03Info)
     void img03Info() {
@@ -396,7 +405,7 @@ public class DriverMainActivity extends AppCompatActivity implements
 //            displayMessage("Information not available");
 //        }
 
-        if (itemObject != null){
+        if (itemObject != null) {
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(DriverMainActivity.this);
             bottomSheetDialog.setContentView(R.layout.courier_info);
             bottomSheetDialog.show();
@@ -453,7 +462,7 @@ public class DriverMainActivity extends AppCompatActivity implements
 
             }
             imgClose.setOnClickListener(v -> bottomSheetDialog.dismiss());
-        }else {
+        } else {
             displayMessage("Information not available");
         }
 
@@ -652,9 +661,11 @@ public class DriverMainActivity extends AppCompatActivity implements
     TextView topSrcDestTxtLbl;
     String docopen = "";
     private static String currentTripStatus = "";
+    private static String mainTripStatus = "";
     String CurrentStatus = " ";
     String PreviousStatus = " ";
     String request_id = " ";
+    String userdrop_request_id = " ";
     int method;
     CountDownTimer countDownTimer;
     int value = 0;
@@ -678,6 +689,7 @@ public class DriverMainActivity extends AppCompatActivity implements
     String cancaltype = "";
     String cancalReason = "";
     private Handler ha;
+    private Runnable runnable;
     private String myLat = "";
     //map variable
     private String myLng = "";
@@ -700,6 +712,7 @@ public class DriverMainActivity extends AppCompatActivity implements
     private String count;
     private ArrayList<RequestList> requestLists;
     private JSONArray statusResponses;
+    private JSONArray userdrop;
     private String feedBackRating;
     private String feedBackComment;
     private AlertDialog Waintingdialog;
@@ -712,10 +725,12 @@ public class DriverMainActivity extends AppCompatActivity implements
     DrawerLayout drawer_layout;
     @BindView(R.id.nav_view)
     NavigationView nav_view;
+
     @OnClick(R.id.legal_id)
-            void legal_id(){
+    void legal_id() {
         startActivity(new Intent(DriverMainActivity.this, LegalActivity.class));
     }
+
     @BindView(R.id.footer_item_version)
     TextView footer_item_version;
 
@@ -768,6 +783,12 @@ public class DriverMainActivity extends AppCompatActivity implements
         checkStatus();
         ha = new Handler();
         //check status every 5 sec
+        runnable = () -> {
+            checkStatus();
+            ha.postDelayed(runnable, 5000);
+        };
+        ha.postDelayed(runnable, 5000);
+
         ha.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -780,7 +801,6 @@ public class DriverMainActivity extends AppCompatActivity implements
                 ha.postDelayed(this, 5000);
             }
         }, 5000);
-
         signature_pad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -800,6 +820,16 @@ public class DriverMainActivity extends AppCompatActivity implements
                 clear_button.setEnabled(false);
             }
         });
+
+        View googleLogo = view.findViewWithTag("GoogleWatermark");
+        RelativeLayout.LayoutParams glLayoutParams = (RelativeLayout.LayoutParams) googleLogo.getLayoutParams();
+        glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);
+        glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+        glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_START, 0);
+        glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+        googleLogo.setLayoutParams(glLayoutParams);
+
 
     }
 
@@ -1285,7 +1315,7 @@ public class DriverMainActivity extends AppCompatActivity implements
             Log.e(TAG, "crt_lng" + crt_lng);
             currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-            checkStatus();
+            //      checkStatus();
 
 //            if (type != null) {
 //                checkStatusSchedule();
@@ -1377,15 +1407,14 @@ public class DriverMainActivity extends AppCompatActivity implements
                             bookingId = response.optJSONArray("requests").getJSONObject(0)
                                     .optJSONObject("request").optString("booking_id");
                             address = response.optJSONArray("requests").getJSONObject(0).optJSONObject("request").optString("s_address");
-                            daddress = response.optJSONArray("requests").getJSONObject(0).optJSONObject("request").optString("d_address");
+                            /*daddress = response.optJSONArray("requests").getJSONObject(0).optJSONObject("request").optString("d_address");*/
 
 
                             lblCmfrmSourceAddress.setText(address);
                             lblCmfrmDestAddress.setText(daddress);
 
-                            if (response.optJSONObject("item")!=null)
-                            {
-                                itemObject =response.optJSONObject("item");
+                            if (response.optJSONObject("item") != null) {
+                                itemObject = response.optJSONObject("item");
                             }
 
                         }
@@ -1421,36 +1450,72 @@ public class DriverMainActivity extends AppCompatActivity implements
                                     e.printStackTrace();
                                 }
 
+                                try {
+                                    if (statusResponse != null) {
+                                        userdrop = statusResponse.getJSONArray("userdrop");
+                                    }
+                                    // locationArrayList = new ArrayList<>();
+                                    // flowArrayList = new ArrayList<>();
+                                    mainTripStatus = statusResponse.optString("status");
+                                    for (int i = 0; i < userdrop.length(); i++) {
+                                        if (!userdrop.getJSONObject(i).optString("status").equals("COMPLETED") && !statusResponse.optString("status").equalsIgnoreCase("SEARCHING")) {
+                                            userdrop_request_id = userdrop.getJSONObject(i).optString("id");
+                                            srcLatitude = Double.parseDouble(response.optJSONArray("requests").getJSONObject(0).optJSONObject("request").optString("s_latitude"));
+                                            srcLongitude = Double.parseDouble(response.optJSONArray("requests").getJSONObject(0).optJSONObject("request").optString("s_longitude"));
+
+                                            destLatitude = Double.parseDouble(userdrop.getJSONObject(i).optString("d_latitude"));
+                                            destLongitude = Double.parseDouble(userdrop.getJSONObject(i).optString("d_longitude"));
+                                            daddress = userdrop.getJSONObject(i).optString("d_address");
+                                            currentTripStatus = userdrop.getJSONObject(i).optString("status");
+                                            break;
+                                        } else {
+                                            if (statusResponse != null) {
+                                                currentTripStatus = statusResponse.optString("status");
+                                                mainTripStatus = statusResponse.optString("status");
+                                                daddress = userdrop.getJSONObject(0).optString("d_address");
+                                            }
+
+                                        }
+
+
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
                                 if ((statusResponse != null) && (request_id != null)) {
-                                    currentTripStatus = statusResponse.optString("status");
-                                    srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
+                                    /* currentTripStatus = statusResponse.optString("status");
+                                   srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
                                     srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
 
                                     destLatitude = Double.valueOf(statusResponse.optString("d_latitude"));
-                                    destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));
+                                    destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));*/
                                     Log.d("currentTripStatus", currentTripStatus);
                                     if ((!previous_request_id.equals(request_id) || previous_request_id.equals(" ")) && mMap != null) {
                                         previous_request_id = request_id;
-                                        srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
+                                        /*srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
                                         srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
 
                                         destLatitude = Double.valueOf(statusResponse.optString("d_latitude"));
-                                        destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));
+                                        destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));*/
                                         //noinspection deprecation
                                         setSourceLocationOnMap(currentLatLng);
                                         setPickupLocationOnMap();
                                         sos.setVisibility(View.GONE);
 
                                     }
-                                    utils.print("Cur_and_New_status :", "" + CurrentStatus + "," + statusResponse.optString("status"));
+                                    utils.print("Cur_and_New_status :", "" + CurrentStatus + "," + currentTripStatus);
 //                                        String ok = "ok";
 //                                        if (ok.equals(ok))
-                                    if (!PreviousStatus.equals(statusResponse.optString("status"))) {
+
+
+                                    if (!PreviousStatus.equals(currentTripStatus)) {
 //                                            || statusResponse.optString("paid").equals("1") || statusResponse.optString("paid").equals("0")
-                                        PreviousStatus = statusResponse.optString("status");
+                                        PreviousStatus = currentTripStatus;
                                         clearVisibility();
                                         utils.print("responseObj(" + request_id + ")", statusResponse.toString());
-                                        utils.print("Cur_and_New_status :", "" + CurrentStatus + "," + statusResponse.optString("status"));
+                                        utils.print("Cur_and_New_status :", "" + CurrentStatus + "," + currentTripStatus);
                                         if (!statusResponse.optString("status").equals("SEARCHING")) {
                                             timerCompleted = false;
                                             if (mPlayer != null && mPlayer.isPlaying()) {
@@ -1459,7 +1524,7 @@ public class DriverMainActivity extends AppCompatActivity implements
                                                 countDownTimer.cancel();
                                             }
                                         }
-                                        if (statusResponse.optString("status").equals("SEARCHING")) {
+                                        if (currentTripStatus.equals("SEARCHING")) {
                                             scheduleTrip = false;
                                             if (!timerCompleted) {
                                                 setValuesTo_ll_01_contentLayer_accept_or_reject_now(statusResponses);
@@ -1468,8 +1533,8 @@ public class DriverMainActivity extends AppCompatActivity implements
                                                 }
                                                 ll_01_contentLayer_accept_or_reject_now.setVisibility(View.VISIBLE);
                                             }
-                                            CurrentStatus = "STARTED";
-                                        } else if (statusResponse.optString("status").equals("STARTED")) {
+                                            CurrentStatus = currentTripStatus;
+                                        } else if (currentTripStatus.equals("STARTED") || currentTripStatus.equalsIgnoreCase("ACCEPTED")) {
                                             setValuesTo_ll_03_contentLayer_service_flow(statusResponses, response);
                                             ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                             try {
@@ -1477,9 +1542,9 @@ public class DriverMainActivity extends AppCompatActivity implements
                                             } catch (NullPointerException ne) {
                                                 btn_01_status.setText(App.getContext().getString(R.string.tap_when_arrived));
                                             }
-                                            CurrentStatus = "ARRIVED";
+                                            CurrentStatus = currentTripStatus;
                                             sos.setVisibility(View.GONE);
-                                            if (srcLatitude == 0 && srcLongitude == 0 && destLatitude == 0 && destLongitude == 0) {
+                                            /*if (srcLatitude == 0 && srcLongitude == 0 && destLatitude == 0 && destLongitude == 0) {
                                                 mapClear();
                                                 srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
                                                 srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
@@ -1489,17 +1554,16 @@ public class DriverMainActivity extends AppCompatActivity implements
                                                 //
 //                                                setSourceLocationOnMap(currentLatLng);
 //                                                setPickupLocationOnMap();
-                                            }
+                                            }*/
                                             sos.setVisibility(View.GONE);
                                             btn_cancel_ride.setVisibility(View.VISIBLE);
                                             destinationLayer.setVisibility(View.VISIBLE);
                                             layoutinfo.setVisibility(View.GONE);
-                                            String address = statusResponse.optString("s_address");
+                                            //address = statusResponse.optString("s_address");
                                             if (address != null && !address.equalsIgnoreCase("null") && address.length() > 0)
                                                 destination.setText(address);
                                             else
-                                                destination.setText(getAddress(statusResponse.optString("s_latitude"),
-                                                        statusResponse.optString("s_longitude")));
+                                                destination.setText(getAddress(srcLatitude, srcLongitude));
                                             try {
                                                 topSrcDestTxtLbl.setText(App.getContext().getString(R.string.pick_up));
                                             } catch (NullPointerException ne) {
@@ -1510,7 +1574,7 @@ public class DriverMainActivity extends AppCompatActivity implements
                                             setSourceLocationOnMap(currentLatLng);
                                             setPickupLocationOnMap();
 
-                                        } else if (statusResponse.optString("status").equals("ARRIVED")) {
+                                        } else if (currentTripStatus.equals("ARRIVED")) {
                                             setValuesTo_ll_03_contentLayer_service_flow(statusResponses, response);
                                             ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                             try {
@@ -1531,13 +1595,13 @@ public class DriverMainActivity extends AppCompatActivity implements
 
                                             btn_cancel_ride.setVisibility(View.VISIBLE);
                                             destinationLayer.setVisibility(View.VISIBLE);
-                                            String address = statusResponse.optString("d_address");
+                                            //   String address = statusResponse.optString("d_address");
                                             try {
                                                 if (address != null && !address.equalsIgnoreCase("null") && address.length() > 0)
                                                     destination.setText(address);
                                                 else
-                                                    destination.setText(getAddress(statusResponse.optString("d_latitude"),
-                                                            statusResponse.optString("d_longitude")));
+                                                    destination.setText(getAddress(srcLatitude,
+                                                            srcLongitude));
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
@@ -1549,7 +1613,7 @@ public class DriverMainActivity extends AppCompatActivity implements
                                             setSourceLocationOnMap(currentLatLng);
                                             setPickupLocationOnMap();
 
-                                        } else if (statusResponse.optString("status").equals("PICKEDUP")) {
+                                        } else if (currentTripStatus.equals("PICKEDUP")) {
                                             setValuesTo_ll_03_contentLayer_service_flow(statusResponses, response);
                                             ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                             try {
@@ -1564,145 +1628,178 @@ public class DriverMainActivity extends AppCompatActivity implements
                                             driveraccepted.setVisibility(View.GONE);
                                             driverArrived.setVisibility(View.GONE);
                                             driverPicked.setVisibility(View.VISIBLE);
-                                            CurrentStatus = "DROPPED";
+                                            CurrentStatus = currentTripStatus;
                                             destinationLayer.setVisibility(View.VISIBLE);
                                             layoutinfo.setVisibility(View.GONE);
                                             btn_cancel_ride.setVisibility(View.GONE);
-                                            String address = statusResponse.optString("d_address");
+                                            //  String address = statusResponse.optString("d_address");
                                             try {
-                                                if (address != null && !address.equalsIgnoreCase("null") && address.length() > 0)
-                                                    destination.setText(address);
+                                                if (daddress != null && !daddress.equalsIgnoreCase("null") && daddress.length() > 0)
+                                                    destination.setText(daddress);
                                                 else
-                                                    destination.setText(getAddress(statusResponse.optString("d_latitude"),
-                                                            statusResponse.optString("d_longitude")));
+                                                    destination.setText(getAddress(destLatitude,
+                                                            destLongitude));
                                             } catch (NullPointerException ne) {
                                                 ne.printStackTrace();
                                             }
                                             topSrcDestTxtLbl.setText(App.getContext().getString(R.string.drop_at));
 
                                             mapClear();
-                                            srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
+                                           /* srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
                                             srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
                                             destLatitude = Double.valueOf(statusResponse.optString("d_latitude"));
-                                            destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));
+                                            destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));*/
                                             //noinspection deprecation
                                             //
                                             setSourceLocationOnMap(currentLatLng);
                                             setPickupLocationOnMap();
 
 
-                                        } else if (statusResponse.optString("status").equals("DROPPED")
-                                                && statusResponse.optString("paid").equals("0")) {
-                                            setValuesTo_ll_04_contentLayer_payment(statusResponses);
-                                            if (ll_04_contentLayer_payment.getVisibility() == View.GONE) {
-                                                ll_04_contentLayer_payment.startAnimation(slide_up);
-                                            }
-                                            ll_04_contentLayer_payment.setVisibility(View.VISIBLE);
-                                            img03Status1.setImageResource(R.drawable.arriveddisable);
-                                            img03Status2.setImageResource(R.drawable.pickeddisable);
-                                            driveraccepted.setVisibility(View.VISIBLE);
-                                            driverArrived.setVisibility(View.GONE);
-                                            driverPicked.setVisibility(View.GONE);
+                                        } else if (currentTripStatus.equals("DROPPED")) {
+
+                                            CurrentStatus = currentTripStatus;
+                                            setValuesTo_ll_03_contentLayer_service_flow(statusResponses, response);
+                                            ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                             try {
-                                                btn_01_status.setText(App.getContext().getString(R.string.confirm_payment));
+                                                btn_01_status.setText(App.getContext().getString(R.string.tap_when_dropped));
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
                                             sos.setVisibility(View.VISIBLE);
-//                                                navigate.setVisibility(View.GONE);
-                                            destinationLayer.setVisibility(View.GONE);
-                                            layoutinfo.setVisibility(View.VISIBLE);
-                                            CurrentStatus = "COMPLETED";
-
-                                            LocationTracking.distance = 0.0f;
-                                        } else if (statusResponse.optString("status").equals("DROPPED")
-                                                && statusResponse.optString("paid").equals("0")) {
-                                            setValuesTo_ll_04_contentLayer_payment(statusResponses);
-                                            if (ll_04_contentLayer_payment.getVisibility() == View.GONE) {
-                                                ll_04_contentLayer_payment.startAnimation(slide_up);
-                                            }
-                                            ll_04_contentLayer_payment.setVisibility(View.VISIBLE);
-                                            img03Status1.setImageResource(R.drawable.arriveddisable);
-                                            img03Status2.setImageResource(R.drawable.pickeddisable);
-                                            driveraccepted.setVisibility(View.VISIBLE);
+//                                                navigate.setVisibility(View.VISIBLE);
+                                            img03Status1.setImageResource(R.drawable.arrived_select);
+                                            img03Status2.setImageResource(R.drawable.pickup_select);
+                                            driveraccepted.setVisibility(View.GONE);
                                             driverArrived.setVisibility(View.GONE);
-                                            driverPicked.setVisibility(View.GONE);
+                                            driverPicked.setVisibility(View.VISIBLE);
+                                            CurrentStatus = currentTripStatus;
+                                            destinationLayer.setVisibility(View.VISIBLE);
+                                            layoutinfo.setVisibility(View.GONE);
+                                            btn_cancel_ride.setVisibility(View.GONE);
+                                            //  String address = statusResponse.optString("d_address");
                                             try {
-                                                btn_01_status.setText(App.getContext().getString(R.string.confirm_payment));
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
+                                                if (daddress != null && !daddress.equalsIgnoreCase("null") && daddress.length() > 0)
+                                                    destination.setText(daddress);
+                                                else
+                                                    destination.setText(getAddress(destLatitude,
+                                                            destLongitude));
+                                            } catch (NullPointerException ne) {
+                                                ne.printStackTrace();
                                             }
-                                            sos.setVisibility(View.VISIBLE);
-//                                                navigate.setVisibility(View.GONE);
-                                            destinationLayer.setVisibility(View.GONE);
-                                            layoutinfo.setVisibility(View.VISIBLE);
-                                            CurrentStatus = "COMPLETED";
+                                            topSrcDestTxtLbl.setText(App.getContext().getString(R.string.drop_at));
 
-                                            LocationTracking.distance = 0.0f;
-                                        } else if (statusResponse.optString("status").equals("COMPLETED")
+                                            mapClear();
+                                           /* srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
+                                            srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
+                                            destLatitude = Double.valueOf(statusResponse.optString("d_latitude"));
+                                            destLongitude = Double.valueOf(statusResponse.optString("d_longitude"));*/
+                                            //noinspection deprecation
+                                            //
+                                            setSourceLocationOnMap(currentLatLng);
+                                            setPickupLocationOnMap();
+
+
+                                               /* setValuesTo_ll_04_contentLayer_payment(statusResponses);
+                                                if (ll_04_contentLayer_payment.getVisibility() == View.GONE) {
+                                                    ll_04_contentLayer_payment.startAnimation(slide_up);
+                                                }
+                                                ll_04_contentLayer_payment.setVisibility(View.VISIBLE);
+                                                img03Status1.setImageResource(R.drawable.arriveddisable);
+                                                img03Status2.setImageResource(R.drawable.pickeddisable);
+                                                driveraccepted.setVisibility(View.VISIBLE);
+                                                driverArrived.setVisibility(View.GONE);
+                                                driverPicked.setVisibility(View.GONE);
+                                                try {
+                                                    btn_01_status.setText(App.getContext().getString(R.string.confirm_payment));
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                                sos.setVisibility(View.VISIBLE);
+//                                                navigate.setVisibility(View.GONE);
+                                                destinationLayer.setVisibility(View.GONE);
+                                                layoutinfo.setVisibility(View.VISIBLE);
+
+
+                                                LocationTracking.distance = 0.0f;*/
+
+                                        } else if (currentTripStatus.equals("COMPLETED")
                                                 && statusResponse.optString("paid").equals("0")) {
-
-                                            setValuesTo_ll_04_contentLayer_payment(statusResponses);
-                                            if (ll_04_contentLayer_payment.getVisibility() == View.GONE) {
-                                                ll_04_contentLayer_payment.startAnimation(slide_up);
-                                            }
-                                            ll_04_contentLayer_payment.setVisibility(View.VISIBLE);
-                                            img03Status1.setImageResource(R.drawable.arriveddisable);
-                                            img03Status2.setImageResource(R.drawable.pickeddisable);
-                                            driveraccepted.setVisibility(View.VISIBLE);
-                                            driverArrived.setVisibility(View.GONE);
-                                            driverPicked.setVisibility(View.GONE);
-                                            try {
-                                                btn_01_status.setText(App.getContext().getString(R.string.confirm_payment));
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-                                            sos.setVisibility(View.VISIBLE);
+                                            if (!statusResponse.optString("status").equalsIgnoreCase("COMPLETED"))
+                                                CurrentStatus = currentTripStatus;
+                                            else {
+                                                setValuesTo_ll_04_contentLayer_payment(statusResponses);
+                                                if (ll_04_contentLayer_payment.getVisibility() == View.GONE) {
+                                                    ll_04_contentLayer_payment.startAnimation(slide_up);
+                                                }
+                                                ll_04_contentLayer_payment.setVisibility(View.VISIBLE);
+                                                img03Status1.setImageResource(R.drawable.arriveddisable);
+                                                img03Status2.setImageResource(R.drawable.pickeddisable);
+                                                driveraccepted.setVisibility(View.VISIBLE);
+                                                driverArrived.setVisibility(View.GONE);
+                                                driverPicked.setVisibility(View.GONE);
+                                                try {
+                                                    btn_01_status.setText(App.getContext().getString(R.string.confirm_payment));
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                                sos.setVisibility(View.VISIBLE);
 //                                                navigate.setVisibility(View.GONE);
-                                            destinationLayer.setVisibility(View.GONE);
-                                            layoutinfo.setVisibility(View.VISIBLE);
-                                            CurrentStatus = "COMPLETED";
+                                                destinationLayer.setVisibility(View.GONE);
+                                                layoutinfo.setVisibility(View.VISIBLE);
+                                                CurrentStatus = currentTripStatus;
 
-                                            LocationTracking.distance = 0.0f;
-                                        } else if (statusResponse.optString("status").equals("COMPLETED")
+                                                LocationTracking.distance = 0.0f;
+                                            }
+
+                                        } else if (currentTripStatus.equals("COMPLETED")
                                                 && statusResponse.optString("paid").equals("1")
                                                 && statusResponse.optString("is_sign").equals("0")) {
 //                                                ok = "not";
-                                            if (ll_04_contentLayer_payment.getVisibility() == View.VISIBLE) {
-                                                ll_04_contentLayer_payment.setVisibility(View.GONE);
-                                            }
-                                            llSignature.setVisibility(View.VISIBLE);
 
-                                            LocationTracking.distance = 0.0f;
-                                        }else if (statusResponse.optString("status").equals("COMPLETED")
+                                            if (!statusResponse.optString("status").equalsIgnoreCase("COMPLETED"))
+                                                CurrentStatus = currentTripStatus;
+                                            else {
+
+                                                if (ll_04_contentLayer_payment.getVisibility() == View.VISIBLE) {
+                                                    ll_04_contentLayer_payment.setVisibility(View.GONE);
+                                                }
+                                                llSignature.setVisibility(View.VISIBLE);
+
+                                                LocationTracking.distance = 0.0f;
+                                            }
+                                        } else if (currentTripStatus.equals("COMPLETED")
                                                 && statusResponse.optString("paid").equals("1")
                                                 && statusResponse.optString("is_sign").equals("1")) {
 //                                                ok = "not";
-                                            if (ll_04_contentLayer_payment.getVisibility() == View.VISIBLE) {
+                                            if (!statusResponse.optString("status").equalsIgnoreCase("COMPLETED"))
+                                                CurrentStatus = currentTripStatus;
+                                            else {
+
+                                                if (ll_04_contentLayer_payment.getVisibility() == View.VISIBLE) {
+                                                    ll_04_contentLayer_payment.setVisibility(View.GONE);
+                                                }
+                                                llSignature.setVisibility(View.GONE);
+                                                setValuesTo_ll_05_contentLayer_feedback(statusResponses);
+                                                if (ll_05_contentLayer_feedback.getVisibility() == View.GONE) {
+                                                    ll_05_contentLayer_feedback.startAnimation(slide_up);
+                                                }
                                                 ll_04_contentLayer_payment.setVisibility(View.GONE);
-                                            }
-                                            llSignature.setVisibility(View.GONE);
-                                            setValuesTo_ll_05_contentLayer_feedback(statusResponses);
-                                            if (ll_05_contentLayer_feedback.getVisibility() == View.GONE) {
-                                                ll_05_contentLayer_feedback.startAnimation(slide_up);
-                                            }
-                                            ll_04_contentLayer_payment.setVisibility(View.GONE);
-                                            edt05Comment.setText("");
-                                            ll_05_contentLayer_feedback.setVisibility(View.VISIBLE);
-                                            sos.setVisibility(View.GONE);
-                                            destinationLayer.setVisibility(View.GONE);
-                                            layoutinfo.setVisibility(View.VISIBLE);
-                                            try {
-                                                btn_01_status.setText(App.getContext().getString(R.string.submit));
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
+                                                edt05Comment.setText("");
+                                                ll_05_contentLayer_feedback.setVisibility(View.VISIBLE);
+                                                sos.setVisibility(View.GONE);
+                                                destinationLayer.setVisibility(View.GONE);
+                                                layoutinfo.setVisibility(View.VISIBLE);
+                                                try {
+                                                    btn_01_status.setText(App.getContext().getString(R.string.submit));
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
 
-                                            CurrentStatus = "RATE";
+                                                CurrentStatus = "RATE";
 
-                                            LocationTracking.distance = 0.0f;
-                                        }
-                                        else if (statusResponse.optString("status").equals("SCHEDULED")) {
+                                                LocationTracking.distance = 0.0f;
+                                            }
+                                        } else if (currentTripStatus.equals("SCHEDULED")) {
                                             if (mMap != null) {
                                                 if (ActivityCompat.checkSelfPermission(App.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(App.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                                                     return;
@@ -2073,7 +2170,7 @@ public class DriverMainActivity extends AppCompatActivity implements
             mPlayer.stop();
             mPlayer = null;
         }
-        ha.removeCallbacksAndMessages(null);
+        ha.removeCallbacksAndMessages(runnable);
         super.onDestroy();
     }
 
@@ -2088,12 +2185,11 @@ public class DriverMainActivity extends AppCompatActivity implements
         }
     }
 
-    public String getAddress(String strLatitude, String strLongitude) {
+    public String getAddress(double latitude, double longitude) {
         Geocoder geocoder;
         List<Address> addresses;
         geocoder = new Geocoder(DriverMainActivity.this, Locale.getDefault());
-        double latitude = Double.parseDouble(strLatitude);
-        double longitude = Double.parseDouble(strLongitude);
+
         String address = "", city = "", state = "";
         try {
             addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
@@ -2130,7 +2226,7 @@ public class DriverMainActivity extends AppCompatActivity implements
             } else {
                 normalPlay = false;
             }
-            ha.removeCallbacksAndMessages(null);
+            //  ha.removeCallbacksAndMessages(null);
         }
     }
 
@@ -2240,7 +2336,14 @@ public class DriverMainActivity extends AppCompatActivity implements
                 mPlayer.start();
             }
             utils.print(TAG, "onResume: Handler Call" + isRunning);
-            ha.postDelayed(new Runnable() {
+
+          /*   runnable = () -> {
+                checkStatus();
+                ha.postDelayed(runnable, 5000);
+            };
+            ha.postDelayed(runnable,5000);
+
+           ha.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //call function
@@ -2252,7 +2355,7 @@ public class DriverMainActivity extends AppCompatActivity implements
                     checkStatus();
                     ha.postDelayed(this, 3000);
                 }
-            }, 3000);
+            }, 3000);*/
         }
     }
 
@@ -2567,13 +2670,13 @@ public class DriverMainActivity extends AppCompatActivity implements
         });
     }
 
-    private void dropTrip(String id, String status) {
+    private void dropTrip(String userdrop_request_id, String request_id, String status) {
         String auth = "Bearer" + " " + SharedHelper.getKey(App.getContext(), "access_token");
         String dist = String.valueOf(LocationTracking.distance * 0.001);
         customDialog = new CustomDialog(DriverMainActivity.this);
         customDialog.setCancelable(false);
         customDialog.show();
-        Call<ResponseBody> call = restInterface.dropTrip(URLHelper.REQUEST_WITH, auth, id, "PATCH", status, crt_lat, crt_lng, dist);
+        Call<ResponseBody> call = restInterface.dropTrip(URLHelper.REQUEST_WITH, auth, request_id, userdrop_request_id, status, crt_lat, crt_lng, dist);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -2593,18 +2696,43 @@ public class DriverMainActivity extends AppCompatActivity implements
         });
     }
 
-    private void updateTripStatus(String id, String status) {
+    /*private void updateTripStatus(String userdrop_request_id, String request_id, String status) {
         String auth = "Bearer" + " " + SharedHelper.getKey(App.getContext(), "access_token");
         customDialog = new CustomDialog(DriverMainActivity.this);
         customDialog.setCancelable(false);
         customDialog.show();
-        Call<ResponseBody> call = restInterface.updateTripStatus(URLHelper.REQUEST_WITH, auth, id, "PATCH", status);
+        Call<ResponseBody> call = restInterface.updateTripStatus(URLHelper.REQUEST_WITH, auth, request_id, userdrop_request_id, status);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 customDialog.dismiss();
                 if (response.code() == 200) {
+                    checkStatus();
+                } else {
+                    displayMessage(getString(R.string.please_try_again));
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                customDialog.dismiss();
+                displayMessage(getString(R.string.something_went_wrong));
+            }
+        });
+    }*/
+
+    private void updateTripUpdateStatus(String id, String status) {
+        String auth = "Bearer" + " " + SharedHelper.getKey(App.getContext(), "access_token");
+        customDialog = new CustomDialog(DriverMainActivity.this);
+        customDialog.setCancelable(false);
+        customDialog.show();
+        Call<ResponseBody> call = restInterface.updateTripUpdateStatus(URLHelper.REQUEST_WITH, auth, id, status);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                customDialog.dismiss();
+                if (response.code() == 200) {
+                    checkStatus();
                 } else {
                     displayMessage(getString(R.string.please_try_again));
                 }
@@ -2650,5 +2778,11 @@ public class DriverMainActivity extends AppCompatActivity implements
     }
 
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (ha != null)
+            ha.removeCallbacks(runnable);
+    }
 
 }

@@ -93,43 +93,51 @@ public interface RestInterface {
                               @Query("latitude") String lat,
                               @Query("longitude") String lng);
 
-    @POST(URLHelper.CURRENT_TRIP + "/{id}")
+    @POST(URLHelper.CURRENT_TRIP_RATE + "/{id}")
     Call<ResponseBody> acceptTrip(@Header("X-Requested-With") String requestWith,
                                   @Header("Authorization") String authorization,
                                   @Path("id") String id);
+
     @FormUrlEncoded
-    @POST(URLHelper.UPLOAD_SIGN )
+    @POST(URLHelper.UPLOAD_SIGN)
     Call<ResponseBody> saveSign(@Header("X-Requested-With") String requestWith,
-                                  @Header("Authorization") String authorization,
+                                @Header("Authorization") String authorization,
                                 @Field("request_id") String request_id,
                                 @Field("signature") String signature);
 
-    @DELETE(URLHelper.CURRENT_TRIP + "/{id}")
+    @DELETE(URLHelper.CURRENT_TRIP_RATE + "/{id}")
     Call<ResponseBody> rejectTrip(@Header("X-Requested-With") String requestWith,
                                   @Header("Authorization") String authorization,
                                   @Path("id") String id);
 
     @FormUrlEncoded
-    @POST(URLHelper.CURRENT_TRIP + "/{id}")
+    @POST(URLHelper.CURRENT_TRIP)
     Call<ResponseBody> updateTripStatus(@Header("X-Requested-With") String requestWith,
                                         @Header("Authorization") String authorization,
-                                        @Path("id") String id,
-                                        @Field("_method") String patch,
+                                        @Field("requestid") String id,
+                                        @Field("id") String requestid,
                                         @Field("status") String status);
 
     @FormUrlEncoded
-    @POST(URLHelper.CURRENT_TRIP + "/{id}")
+    @POST(URLHelper.CURRENT_TRIP_UPDATE)
+    Call<ResponseBody> updateTripUpdateStatus(@Header("X-Requested-With") String requestWith,
+                                              @Header("Authorization") String authorization,
+                                              @Field("id") String id,
+                                              @Field("status") String status);
+
+    @FormUrlEncoded
+    @POST(URLHelper.CURRENT_TRIP)
     Call<ResponseBody> dropTrip(@Header("X-Requested-With") String requestWith,
                                 @Header("Authorization") String authorization,
-                                @Path("id") String id,
-                                @Field("_method") String patch,
+                                @Field("requestid") String requestid,
+                                @Field("id") String id,
                                 @Field("status") String status,
                                 @Field("latitude") String lat,
                                 @Field("longitude") String lng,
                                 @Field("distance") String distance);
 
     @FormUrlEncoded
-    @POST(URLHelper.CURRENT_TRIP + "/{id}" + "/{rate}")
+    @POST(URLHelper.CURRENT_TRIP_RATE + "/{id}" + "/{rate}")
     Call<ResponseBody> rateTrip(@Header("X-Requested-With") String requestWith,
                                 @Header("Authorization") String authorization,
                                 @Path("id") String id,
@@ -197,7 +205,7 @@ public interface RestInterface {
 
     @POST(URLHelper.RIDE_SUMMARY)
     Call<SummryRes> rideSummary(@Header("X-Requested-With") String requestWith,
-                               @Header("Authorization") String authorization);
+                                @Header("Authorization") String authorization);
 
     @GET(URLHelper.EARNINGS)
     Call<EarningRes> earnings(@Header("X-Requested-With") String requestWith,

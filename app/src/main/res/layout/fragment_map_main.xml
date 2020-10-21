@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/_8sdp"
             android:checked="true"
             android:theme="@style/SwitchTheme" />
 
@@ -1459,7 +1459,6 @@
                     android:layout_height="@dimen/_35sdp"
                     android:layout_marginStart="@dimen/_35sdp"
                     android:layout_marginEnd="@dimen/_35sdp"
-
                     android:background="@drawable/white_roundshape_background"
                     android:backgroundTint="@color/recyclerview_item_background"
                     android:elevation="@dimen/_2sdp" />
@@ -1681,7 +1680,6 @@
                         android:layout_width="@dimen/_96sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_marginLeft="@dimen/_3sdp"
-
                         android:backgroundTint="@color/colorPrimary"
                         android:fontFamily="@font/montserrat_semibold"
                         android:padding="@dimen/button_padding"

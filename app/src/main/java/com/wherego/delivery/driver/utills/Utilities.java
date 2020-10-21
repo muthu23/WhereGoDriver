@@ -97,4 +97,7 @@ public class Utilities {
             Log.v(tag, message);
         }
     }
+    public static void printV(String TAG, String message) {
+        System.out.println(TAG + "==>" + message);
+    }
 }
