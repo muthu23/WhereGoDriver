@@ -28,6 +28,8 @@ import com.wherego.delivery.driver.model.history.User;
 import com.wherego.delivery.driver.utills.Utils;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -104,7 +106,7 @@ public class HistoryDetailsActivity extends AppCompatActivity {
 
     RestInterface restInterface;
     String requestID;
-
+    NumberFormat format = new DecimalFormat("#.##");
     String signature;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

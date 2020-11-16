@@ -830,8 +830,25 @@ public class DriverMainActivity extends AppCompatActivity implements
         glLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
         googleLogo.setLayoutParams(glLayoutParams);
 
+        showPaymentDialog();
+    }
+
+
+    public void showPaymentDialog() {
+        AlertDialog alertDialog;
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(getResources().getString(R.string.app_name));
+        alert.setIcon(R.mipmap.ic_launcher);
+        View custom = LayoutInflater.from(this).inflate(R.layout.custom_payment_info, null);
+        final Button btnok = custom.findViewById(R.id.btnOkay);
+        alertDialog = alert.create();
+        alertDialog.show();
+        btnok.setOnClickListener(v -> {
+            alertDialog.cancel();
+        });
 
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void statusCheck() {
